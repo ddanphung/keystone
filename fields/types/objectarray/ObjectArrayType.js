@@ -69,6 +69,9 @@ function isValidNumber(value) {
  */
 
 objectarray.prototype.inputIsValid = function(data, required, item) {
+	return true;
+
+
 	var value = this.getValueFromData(data);
 
 	if (required) {
@@ -109,8 +112,9 @@ objectarray.prototype.inputIsValid = function(data, required, item) {
 
 objectarray.prototype.updateItem = function(item, data) {
 	var value = this.getValueFromData(data);
-	
 	if ('undefined' !== typeof value) {
+		return item.set(this.path, value);
+
 		if (Array.isArray(value)) {
 			var temp = value.filter(function(temp) {
 				if (isValidNumber(temp)) {

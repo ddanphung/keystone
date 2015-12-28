@@ -7,6 +7,8 @@ var FormInput = require('elemental').FormInput;
 
 var lastId = 0;
 
+var defaultItem = {goodCode: '', quantity: 0};
+
 function newItem (value) {
 	lastId = lastId + 1;
 	return { key: 'i' + lastId, value: value };
@@ -33,7 +35,7 @@ module.exports = {
 
 	addItem: function() {
 		var self = this;
-		var newValues = this.state.values.concat(newItem(''));
+		var newValues = this.state.values.concat(newItem({goodCode: '', quantity: 0}));
 		this.setState({
 			values: newValues
 		}, () => {
