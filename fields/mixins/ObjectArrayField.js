@@ -40,7 +40,7 @@ module.exports = {
 			values: newValues
 		}, () => {
 			if (!this.state.values.length) return;
-			ReactDOM.findDOMNode(this.refs['item_' + this.state.values.length]).focus();
+			ReactDOM.findDOMNode(this.refs['item_' + this.state.values.length + '_goodCode']).focus();
 		});
 		this.valueChanged(reduceValues(newValues));
 	},
@@ -55,10 +55,10 @@ module.exports = {
 		this.valueChanged(reduceValues(newValues));
 	},
 
-	updateItem: function(i, event) {
+	updateItem: function(i, nestedField, event) {
 		var updatedValues = this.state.values;
 		var updateIndex = updatedValues.indexOf(i);
-		updatedValues[updateIndex].value = this.cleanInput ? this.cleanInput(event.target.value) : event.target.value;
+		updatedValues[updateIndex].value[nestedField] = event.target.value[nestedField];
 		this.setState({
 			values: updatedValues
 		});
@@ -86,7 +86,8 @@ module.exports = {
 		const value = this.processInputValue ? this.processInputValue(item.value) : item.value;
 		return (
 			<FormField key={item.key}>
-				<Input ref={'item_' + (index + 1)} name={this.props.path} value={value} onChange={this.updateItem.bind(this, item)} autoComplete="off" />
+				<Input ref={'item_' + (index + 1) + '_goodCode'} name={this.props.path} value={value} onChange={this.updateItem.bind(this, item, 'goodCode')} autoComplete="off" />
+				<Input ref={'item_' + (index + 1) + '_quantity'} name={this.props.path} value={value} onChange={this.updateItem.bind(this, item, 'quantity')} autoComplete="off" />
 				<Button type="link-cancel" onClick={this.removeItem.bind(this, item)} className="keystone-relational-button">
 					<span className="octicon octicon-x" />
 				</Button>
