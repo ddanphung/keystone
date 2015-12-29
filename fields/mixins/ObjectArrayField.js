@@ -86,8 +86,8 @@ module.exports = {
 		const value = this.processInputValue ? this.processInputValue(item.value) : item.value;
 		return (
 			<FormField key={item.key}>
-				<Input ref={'item_' + (index + 1) + '_goodCode'} name={this.props.path} value={value} onChange={this.updateItem.bind(this, item, 'goodCode')} autoComplete="off" />
-				<Input ref={'item_' + (index + 1) + '_quantity'} name={this.props.path} value={value} onChange={this.updateItem.bind(this, item, 'quantity')} autoComplete="off" />
+				<Input ref={'item_' + (index + 1) + '_goodCode'} name={this.props.path} value={value.goodCode} onChange={this.updateItem.bind(this, item, 'goodCode')} autoComplete="off" />
+				<Input ref={'item_' + (index + 1) + '_quantity'} name={this.props.path} value={value.quantity} onChange={this.updateItem.bind(this, item, 'quantity')} autoComplete="off" />
 				<Button type="link-cancel" onClick={this.removeItem.bind(this, item)} className="keystone-relational-button">
 					<span className="octicon octicon-x" />
 				</Button>
