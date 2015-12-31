@@ -14,19 +14,19 @@ var util = require('util'),
  */
 
 function objectarray(list, path, options) {
-	
-	this._nativeType = [Object];
+
+	this._nativeType = Object;
 
 	this._underscoreMethods = ['format'];
 	this._formatString = (options.format === false) ? false : (options.format || '0,0[.][000000000000]');
 	this._defaultSize = 'small';
-	
+
 	if (this._formatString && 'string' !== typeof this._formatString) {
 		throw new Error('FieldType.Number: options.format must be a string.');
 	}
-	
+
 	objectarray.super_.call(this, list, path, options);
-	
+
 }
 
 /*!
