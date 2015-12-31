@@ -36,11 +36,13 @@ module.exports = {
 
 	addItem: function() {
 		var newValues = this.state.values.concat(newItem({goodCode: '', quantity: 0}));
+		this.setState({values: newValues});
 		this.valueChanged(reduceValues(newValues));
 	},
 
 	removeItem: function(i) {
 		var newValues = _.without(this.state.values, i);
+		this.setState({values: newValues});
 		this.valueChanged(reduceValues(newValues));
 	},
 
