@@ -26,7 +26,7 @@ module.exports = {
 
 	getInitialState: function() {
 		return {
-			values: this.props.value.map(newItem)
+			values: this.props.value ? this.props.value.map(newItem) : null
 		};
 	},
 
@@ -79,7 +79,7 @@ module.exports = {
 						<FormField label="Quantity" width="one-half" className="form-field--secondary"/>
 					</FormRow>
 				</FormField>
-				{this.state.values.map(this.renderItem)}
+				{this.state.values ? this.state.values.map(this.renderItem) : ''}
 				<Button ref="button" onClick={this.addItem}>Add item</Button>
 			</div>
 		);
